@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gbv_issues",
+  "info": {
+    "singularName": "gbv-issue",
+    "pluralName": "gbv-issues",
+    "displayName": "GBV Issue"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

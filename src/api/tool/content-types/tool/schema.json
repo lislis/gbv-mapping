@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tools",
+  "info": {
+    "singularName": "tool",
+    "pluralName": "tools",
+    "displayName": "Tool"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Link": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "richtext"
+    },
+    "audiences": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::audience.audience"
+    },
+    "creators": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::creator.creator"
+    },
+    "fundings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::funding.funding"
+    },
+    "gbv_issues": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::gbv-issue.gbv-issue"
+    },
+    "privacy_features": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::privacy-feature.privacy-feature"
+    },
+    "state": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::status.status"
+    },
+    "tooltypes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tooltype.tooltype"
+    },
+    "country": {
+      "type": "customField",
+      "customField": "plugin::strapi-country-select.country-select"
+    },
+    "Reviews": {
+      "type": "richtext"
+    },
+    "trauma_informed_design": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

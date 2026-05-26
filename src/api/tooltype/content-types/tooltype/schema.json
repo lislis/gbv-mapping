@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tooltypes",
+  "info": {
+    "singularName": "tooltype",
+    "pluralName": "tooltypes",
+    "displayName": "Tooltype"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}
