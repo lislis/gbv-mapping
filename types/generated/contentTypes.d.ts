@@ -26,6 +26,11 @@ export interface AdminApiToken extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetMinMaxLength<{
         minLength: 1;
       }>;
+    adminPermissions: Schema.Attribute.Relation<
+      'oneToMany',
+      'admin::permission'
+    >;
+    adminUserOwner: Schema.Attribute.Relation<'manyToOne', 'admin::user'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -39,6 +44,9 @@ export interface AdminApiToken extends Struct.CollectionTypeSchema {
         minLength: 1;
       }>;
     expiresAt: Schema.Attribute.DateTime;
+    kind: Schema.Attribute.Enumeration<['content-api', 'admin']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'content-api'>;
     lastUsedAt: Schema.Attribute.DateTime;
     lifespan: Schema.Attribute.BigInteger;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -56,7 +64,6 @@ export interface AdminApiToken extends Struct.CollectionTypeSchema {
     >;
     publishedAt: Schema.Attribute.DateTime;
     type: Schema.Attribute.Enumeration<['read-only', 'full-access', 'custom']> &
-      Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'read-only'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -134,6 +141,7 @@ export interface AdminPermission extends Struct.CollectionTypeSchema {
         minLength: 1;
       }>;
     actionParameters: Schema.Attribute.JSON & Schema.Attribute.DefaultTo<{}>;
+    apiToken: Schema.Attribute.Relation<'manyToOne', 'admin::api-token'>;
     conditions: Schema.Attribute.JSON & Schema.Attribute.DefaultTo<[]>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -385,6 +393,8 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    apiTokens: Schema.Attribute.Relation<'oneToMany', 'admin::api-token'> &
+      Schema.Attribute.Private;
     blocked: Schema.Attribute.Boolean &
       Schema.Attribute.Private &
       Schema.Attribute.DefaultTo<false>;
@@ -516,6 +526,52 @@ export interface ApiCreatorCreator extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCriterionCriterion extends Struct.CollectionTypeSchema {
+  collectionName: 'criteria';
+  info: {
+    displayName: 'Criterion';
+    pluralName: 'criteria';
+    singularName: 'criterion';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Critical: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    Description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::criterion.criterion'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    ParentCategory: Schema.Attribute.Enumeration<
+      [
+        'Privacy & data',
+        'Safety by design',
+        'Agency, consent & participatory design',
+        'Accessibility, equity & inclusion',
+        'Transparency & accountability',
+        'Tone & trauma-informed UX',
+        'AI & algorithmic ethics',
+        'Sustainability & feminist tech ethos',
+      ]
+    > &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    Source: Schema.Attribute.Enumeration<
+      ['Chayn', 'UNFPA', 'FPI', 'Safety Showcase']
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFundingFunding extends Struct.CollectionTypeSchema {
   collectionName: 'fundings';
   info: {
@@ -575,36 +631,6 @@ export interface ApiGbvIssueGbvIssue extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiPrivacyFeaturePrivacyFeature
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'privacy_features';
-  info: {
-    displayName: 'Privacy Feature';
-    pluralName: 'privacy-features';
-    singularName: 'privacy-feature';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.RichText;
-    label: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::privacy-feature.privacy-feature'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiStatusStatus extends Struct.CollectionTypeSchema {
   collectionName: 'statuses';
   info: {
@@ -652,6 +678,10 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     creators: Schema.Attribute.Relation<'oneToMany', 'api::creator.creator'>;
+    criteria: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::criterion.criterion'
+    >;
     Description: Schema.Attribute.RichText;
     fundings: Schema.Attribute.Relation<'oneToMany', 'api::funding.funding'>;
     gbv_issues: Schema.Attribute.Relation<
@@ -663,16 +693,10 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tool.tool'> &
       Schema.Attribute.Private;
     Name: Schema.Attribute.String;
-    privacy_features: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::privacy-feature.privacy-feature'
-    >;
     publishedAt: Schema.Attribute.DateTime;
     Reviews: Schema.Attribute.RichText;
     state: Schema.Attribute.Relation<'oneToOne', 'api::status.status'>;
     tooltypes: Schema.Attribute.Relation<'oneToMany', 'api::tooltype.tooltype'>;
-    trauma_informed_design: Schema.Attribute.Boolean &
-      Schema.Attribute.DefaultTo<false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1222,9 +1246,9 @@ declare module '@strapi/strapi' {
       'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::audience.audience': ApiAudienceAudience;
       'api::creator.creator': ApiCreatorCreator;
+      'api::criterion.criterion': ApiCriterionCriterion;
       'api::funding.funding': ApiFundingFunding;
       'api::gbv-issue.gbv-issue': ApiGbvIssueGbvIssue;
-      'api::privacy-feature.privacy-feature': ApiPrivacyFeaturePrivacyFeature;
       'api::status.status': ApiStatusStatus;
       'api::tool.tool': ApiToolTool;
       'api::tooltype.tooltype': ApiTooltypeTooltype;

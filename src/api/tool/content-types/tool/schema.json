@@ -20,10 +20,29 @@
     "Description": {
       "type": "richtext"
     },
+    "tooltypes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tooltype.tooltype"
+    },
     "audiences": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::audience.audience"
+    },
+    "gbv_issues": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::gbv-issue.gbv-issue"
+    },
+    "state": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::status.status"
+    },
+    "country": {
+      "type": "customField",
+      "customField": "plugin::strapi-country-select.country-select"
     },
     "creators": {
       "type": "relation",
@@ -35,36 +54,13 @@
       "relation": "oneToMany",
       "target": "api::funding.funding"
     },
-    "gbv_issues": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::gbv-issue.gbv-issue"
-    },
-    "privacy_features": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::privacy-feature.privacy-feature"
-    },
-    "state": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::status.status"
-    },
-    "tooltypes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tooltype.tooltype"
-    },
-    "country": {
-      "type": "customField",
-      "customField": "plugin::strapi-country-select.country-select"
-    },
     "Reviews": {
       "type": "richtext"
     },
-    "trauma_informed_design": {
-      "type": "boolean",
-      "default": false
+    "criteria": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::criterion.criterion"
     }
   }
 }
