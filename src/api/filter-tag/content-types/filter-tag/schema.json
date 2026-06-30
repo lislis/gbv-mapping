@@ -1,30 +1,24 @@
 {
   "kind": "collectionType",
-  "collectionName": "criteria",
+  "collectionName": "filter_tags",
   "info": {
-    "singularName": "criterion",
-    "pluralName": "criteria",
-    "displayName": "Criterion"
+    "singularName": "filter-tag",
+    "pluralName": "filter-tags",
+    "displayName": "Filter Tag"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
-      "type": "string",
-      "required": true
+    "Label": {
+      "type": "string"
     },
     "Description": {
-      "type": "text"
+      "type": "string"
     },
-    "Critical": {
-      "type": "boolean",
-      "default": false
-    },
-    "ParentCategory": {
+    "Parent_Category": {
       "type": "enumeration",
-      "required": true,
       "enum": [
         "Privacy & data",
         "Safety by design",
@@ -34,15 +28,6 @@
         "Tone & trauma-informed UX",
         "AI & algorithmic ethics",
         "Sustainability & feminist tech ethos"
-      ]
-    },
-    "Source": {
-      "type": "enumeration",
-      "enum": [
-        "Chayn",
-        "UNFPA",
-        "FPI",
-        "Safety Showcase"
       ]
     }
   }

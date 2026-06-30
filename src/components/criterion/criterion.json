@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_criterion_criteria",
+  "info": {
+    "displayName": "criterion",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "Description": {
+      "type": "string"
+    },
+    "filter_tag": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::filter-tag.filter-tag"
+    },
+    "rating": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    }
+  },
+  "config": {}
+}

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * criterion controller
+ * filter-tag controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::criterion.criterion');
+module.exports = createCoreController('api::filter-tag.filter-tag');

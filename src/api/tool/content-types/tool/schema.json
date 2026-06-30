@@ -57,10 +57,58 @@
     "Reviews": {
       "type": "richtext"
     },
-    "criteria": {
+    "filter_tags": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::criterion.criterion"
+      "target": "api::filter-tag.filter-tag"
+    },
+    "evaluation": {
+      "type": "string"
+    },
+    "privacy_data_1": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "privacy_data_2": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "privacy_data_3": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "privacy_data_4": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "privacy_data_5": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "privacy_data_6": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "privacy_data_7": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "privacy_data_8": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "safety_1": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
     }
   }
 }

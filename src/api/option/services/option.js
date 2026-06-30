@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * criterion service
+ * option service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::criterion.criterion');
+module.exports = createCoreService('api::option.option');

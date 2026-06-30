@@ -526,12 +526,12 @@ export interface ApiCreatorCreator extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCriterionCriterion extends Struct.CollectionTypeSchema {
-  collectionName: 'criteria';
+export interface ApiFilterTagFilterTag extends Struct.CollectionTypeSchema {
+  collectionName: 'filter_tags';
   info: {
-    displayName: 'Criterion';
-    pluralName: 'criteria';
-    singularName: 'criterion';
+    displayName: 'Filter Tag';
+    pluralName: 'filter-tags';
+    singularName: 'filter-tag';
   };
   options: {
     draftAndPublish: true;
@@ -540,16 +540,15 @@ export interface ApiCriterionCriterion extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Critical: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    Description: Schema.Attribute.Text;
+    Description: Schema.Attribute.String;
+    Label: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::criterion.criterion'
+      'api::filter-tag.filter-tag'
     > &
       Schema.Attribute.Private;
-    Name: Schema.Attribute.String & Schema.Attribute.Required;
-    ParentCategory: Schema.Attribute.Enumeration<
+    Parent_Category: Schema.Attribute.Enumeration<
       [
         'Privacy & data',
         'Safety by design',
@@ -560,12 +559,8 @@ export interface ApiCriterionCriterion extends Struct.CollectionTypeSchema {
         'AI & algorithmic ethics',
         'Sustainability & feminist tech ethos',
       ]
-    > &
-      Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
-    Source: Schema.Attribute.Enumeration<
-      ['Chayn', 'UNFPA', 'FPI', 'Safety Showcase']
     >;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -631,6 +626,34 @@ export interface ApiGbvIssueGbvIssue extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiOptionOption extends Struct.CollectionTypeSchema {
+  collectionName: 'options';
+  info: {
+    displayName: 'Option';
+    pluralName: 'options';
+    singularName: 'option';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Label: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::option.option'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiStatusStatus extends Struct.CollectionTypeSchema {
   collectionName: 'statuses';
   info: {
@@ -678,11 +701,12 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     creators: Schema.Attribute.Relation<'oneToMany', 'api::creator.creator'>;
-    criteria: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::criterion.criterion'
-    >;
     Description: Schema.Attribute.RichText;
+    evaluation: Schema.Attribute.String;
+    filter_tags: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::filter-tag.filter-tag'
+    >;
     fundings: Schema.Attribute.Relation<'oneToMany', 'api::funding.funding'>;
     gbv_issues: Schema.Attribute.Relation<
       'oneToMany',
@@ -693,8 +717,17 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tool.tool'> &
       Schema.Attribute.Private;
     Name: Schema.Attribute.String;
+    privacy_data_1: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    privacy_data_2: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    privacy_data_3: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    privacy_data_4: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    privacy_data_5: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    privacy_data_6: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    privacy_data_7: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    privacy_data_8: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     publishedAt: Schema.Attribute.DateTime;
     Reviews: Schema.Attribute.RichText;
+    safety_1: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     state: Schema.Attribute.Relation<'oneToOne', 'api::status.status'>;
     tooltypes: Schema.Attribute.Relation<'oneToMany', 'api::tooltype.tooltype'>;
     updatedAt: Schema.Attribute.DateTime;
@@ -1246,9 +1279,10 @@ declare module '@strapi/strapi' {
       'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::audience.audience': ApiAudienceAudience;
       'api::creator.creator': ApiCreatorCreator;
-      'api::criterion.criterion': ApiCriterionCriterion;
+      'api::filter-tag.filter-tag': ApiFilterTagFilterTag;
       'api::funding.funding': ApiFundingFunding;
       'api::gbv-issue.gbv-issue': ApiGbvIssueGbvIssue;
+      'api::option.option': ApiOptionOption;
       'api::status.status': ApiStatusStatus;
       'api::tool.tool': ApiToolTool;
       'api::tooltype.tooltype': ApiTooltypeTooltype;
