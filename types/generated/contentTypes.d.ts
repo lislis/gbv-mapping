@@ -626,6 +626,34 @@ export interface ApiGbvIssueGbvIssue extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiLanguageLanguage extends Struct.CollectionTypeSchema {
+  collectionName: 'languages';
+  info: {
+    displayName: 'Language';
+    pluralName: 'languages';
+    singularName: 'language';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::language.language'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiOptionOption extends Struct.CollectionTypeSchema {
   collectionName: 'options';
   info: {
@@ -694,6 +722,87 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    accessibility_1: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    accessibility_10: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    accessibility_2: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    accessibility_3: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    accessibility_4: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    accessibility_5: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    accessibility_6: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    accessibility_7: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    accessibility_8: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    accessibility_9: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    agency_consent_1: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    agency_consent_2: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    agency_consent_3: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    agency_consent_4: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    agency_consent_5: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    agency_consent_6: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    agency_consent_7: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    agency_consent_8: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    agency_consent_9: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    ai_1: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    ai_2: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    ai_3: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    ai_4: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    ai_5: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     audiences: Schema.Attribute.Relation<'oneToMany', 'api::audience.audience'>;
     country: Schema.Attribute.String &
       Schema.Attribute.CustomField<'plugin::strapi-country-select.country-select'>;
@@ -701,7 +810,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     creators: Schema.Attribute.Relation<'oneToMany', 'api::creator.creator'>;
-    Description: Schema.Attribute.RichText;
+    Description: Schema.Attribute.Text;
     evaluation: Schema.Attribute.String;
     filter_tags: Schema.Attribute.Relation<
       'oneToMany',
@@ -712,6 +821,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::gbv-issue.gbv-issue'
     >;
+    languages: Schema.Attribute.Relation<'oneToMany', 'api::language.language'>;
     Link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tool.tool'> &
@@ -726,10 +836,43 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     privacy_data_7: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     privacy_data_8: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     publishedAt: Schema.Attribute.DateTime;
-    Reviews: Schema.Attribute.RichText;
     safety_1: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    safety_2: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    safety_3: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    safety_4: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    safety_5: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    safety_6: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     state: Schema.Attribute.Relation<'oneToOne', 'api::status.status'>;
+    sustainability_1: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    sustainability_2: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    sustainability_3: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    sustainability_4: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::option.option'
+    >;
+    tone_1: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    tone_2: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    tone_3: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    tone_4: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    tone_5: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    tone_6: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    tone_7: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     tooltypes: Schema.Attribute.Relation<'oneToMany', 'api::tooltype.tooltype'>;
+    transparency_1: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    transparency_2: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    transparency_3: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    transparency_4: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    transparency_5: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    transparency_6: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1282,6 +1425,7 @@ declare module '@strapi/strapi' {
       'api::filter-tag.filter-tag': ApiFilterTagFilterTag;
       'api::funding.funding': ApiFundingFunding;
       'api::gbv-issue.gbv-issue': ApiGbvIssueGbvIssue;
+      'api::language.language': ApiLanguageLanguage;
       'api::option.option': ApiOptionOption;
       'api::status.status': ApiStatusStatus;
       'api::tool.tool': ApiToolTool;

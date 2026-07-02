@@ -18,7 +18,7 @@
       "type": "string"
     },
     "Description": {
-      "type": "richtext"
+      "type": "text"
     },
     "tooltypes": {
       "type": "relation",
@@ -40,6 +40,11 @@
       "relation": "oneToOne",
       "target": "api::status.status"
     },
+    "languages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::language.language"
+    },
     "country": {
       "type": "customField",
       "customField": "plugin::strapi-country-select.country-select"
@@ -53,9 +58,6 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::funding.funding"
-    },
-    "Reviews": {
-      "type": "richtext"
     },
     "filter_tags": {
       "type": "relation",
@@ -106,6 +108,236 @@
       "target": "api::option.option"
     },
     "safety_1": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "safety_2": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "safety_3": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "safety_4": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "safety_5": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "safety_6": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "agency_consent_1": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "agency_consent_2": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "agency_consent_3": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "agency_consent_4": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "agency_consent_5": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "agency_consent_6": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "agency_consent_7": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "agency_consent_8": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "agency_consent_9": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "accessibility_1": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "accessibility_2": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "accessibility_3": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "accessibility_4": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "accessibility_5": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "accessibility_6": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "accessibility_7": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "accessibility_8": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "accessibility_9": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "accessibility_10": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "transparency_1": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "transparency_2": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "transparency_3": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "transparency_4": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "transparency_5": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "transparency_6": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "tone_1": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "tone_2": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "tone_3": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "tone_4": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "tone_5": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "tone_6": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "tone_7": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "ai_1": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "ai_2": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "ai_3": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "ai_4": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "ai_5": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "sustainability_1": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "sustainability_2": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "sustainability_3": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::option.option"
+    },
+    "sustainability_4": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::option.option"
