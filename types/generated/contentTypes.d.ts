@@ -854,6 +854,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     languages: Schema.Attribute.Relation<'oneToMany', 'api::language.language'>;
     licence: Schema.Attribute.String;
     Link: Schema.Attribute.String;
+    Links: Schema.Attribute.Component<'link.link', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tool.tool'> &
       Schema.Attribute.Private;

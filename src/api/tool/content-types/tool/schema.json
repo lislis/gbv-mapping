@@ -20,6 +20,11 @@
     "Description": {
       "type": "text"
     },
+    "Links": {
+      "type": "component",
+      "component": "link.link",
+      "repeatable": true
+    },
     "tooltypes": {
       "type": "relation",
       "relation": "oneToMany",
