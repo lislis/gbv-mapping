@@ -499,6 +499,34 @@ export interface ApiAudienceAudience extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCountryCountry extends Struct.CollectionTypeSchema {
+  collectionName: 'countries';
+  info: {
+    displayName: 'Country';
+    pluralName: 'countries';
+    singularName: 'country';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::country.country'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCreatorCreator extends Struct.CollectionTypeSchema {
   collectionName: 'creators';
   info: {
@@ -807,8 +835,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     ai_4: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     ai_5: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     audiences: Schema.Attribute.Relation<'oneToMany', 'api::audience.audience'>;
-    country: Schema.Attribute.String &
-      Schema.Attribute.CustomField<'plugin::strapi-country-select.country-select'>;
+    countries: Schema.Attribute.Relation<'oneToMany', 'api::country.country'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1424,6 +1451,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::audience.audience': ApiAudienceAudience;
+      'api::country.country': ApiCountryCountry;
       'api::creator.creator': ApiCreatorCreator;
       'api::filter-tag.filter-tag': ApiFilterTagFilterTag;
       'api::funding.funding': ApiFundingFunding;

@@ -45,9 +45,10 @@
       "relation": "oneToMany",
       "target": "api::language.language"
     },
-    "country": {
-      "type": "customField",
-      "customField": "plugin::strapi-country-select.country-select"
+    "countries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::country.country"
     },
     "creators": {
       "type": "relation",
