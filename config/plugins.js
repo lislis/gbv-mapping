@@ -22,8 +22,8 @@ module.exports = ({ env }) => ({
     config: {
       provider: 'local',
       providerOptions: {
-          sizeLimit: 100000,
-	  root: env("PUBLIC_PATH")
+          sizeLimit: 1000000,
+	  path: env("PUBLIC_PATH")
       },
     },
   },
