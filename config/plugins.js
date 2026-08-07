@@ -1,4 +1,4 @@
-module.exports = () => ({
+module.exports = ({ env }) => ({
   'users-permissions': {
     config: {
       jwtManagement: 'refresh',
