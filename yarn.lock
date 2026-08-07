@@ -4199,6 +4199,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@strapi/provider-upload-local@npm:^5.51.2":
+  version: 5.51.2
+  resolution: "@strapi/provider-upload-local@npm:5.51.2"
+  dependencies:
+    "@strapi/utils": "npm:5.51.2"
+    fs-extra: "npm:11.3.4"
+  checksum: 10c0/2e5743c5739f1c201b7f927bfe8cc653a6ca0ea929e624f2ca6a707118741fa649055d7c0945b9f3756d8ad7b43029d43739c1c1773d54a2fc75c113682c2cc5
+  languageName: node
+  linkType: hard
+
 "@strapi/review-workflows@npm:5.51.1":
   version: 5.51.1
   resolution: "@strapi/review-workflows@npm:5.51.1"
@@ -4468,6 +4478,24 @@ __metadata:
     yup: "npm:0.32.9"
     zod: "npm:3.25.76"
   checksum: 10c0/bc96bd2cccd3a7e14038974db99484fd84f9154dfe91bdc9da4601fb61ed1a5b27cc8f95039f7eed3491e42c764a3973dfd853e69469d718e14637ae465e2567
+  languageName: node
+  linkType: hard
+
+"@strapi/utils@npm:5.51.2":
+  version: 5.51.2
+  resolution: "@strapi/utils@npm:5.51.2"
+  dependencies:
+    "@sindresorhus/slugify": "npm:1.1.0"
+    date-fns: "npm:2.30.0"
+    execa: "npm:5.1.1"
+    http-errors: "npm:2.0.0"
+    lodash: "npm:4.18.1"
+    node-machine-id: "npm:1.1.12"
+    p-map: "npm:4.0.0"
+    preferred-pm: "npm:5.0.0"
+    yup: "npm:0.32.9"
+    zod: "npm:3.25.76"
+  checksum: 10c0/5c03acd84f12d7392586b3432402371694331b6f2e29470dd22a7f84dda6008296957be0f93caa670ec30654d46baf354569858d3d71b65fe08cd518c3ebb29c
   languageName: node
   linkType: hard
 
@@ -8351,6 +8379,7 @@ __metadata:
   dependencies:
     "@strapi/plugin-cloud": "npm:5.51.1"
     "@strapi/plugin-users-permissions": "npm:5.51.1"
+    "@strapi/provider-upload-local": "npm:^5.51.2"
     "@strapi/strapi": "npm:5.51.1"
     better-sqlite3: "npm:12.8.0"
     react: "npm:^18.0.0"

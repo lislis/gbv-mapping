@@ -76,6 +76,14 @@
     "evaluation": {
       "type": "string"
     },
+    "Screenshots": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
     "privacy_data_1": {
       "type": "relation",
       "relation": "oneToOne",

@@ -874,6 +874,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     safety_4: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     safety_5: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     safety_6: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    Screenshots: Schema.Attribute.Media<'images' | 'files', true>;
     state: Schema.Attribute.Relation<'oneToOne', 'api::status.status'>;
     sustainability_1: Schema.Attribute.Relation<
       'oneToOne',
