@@ -25,7 +25,6 @@
     "strapi-country-select": "^1.1.0",
     "styled-components": "^6.0.0"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=20.0.0 <=24.x.x",
     "npm": ">=6.0.0"
@@ -33,5 +32,6 @@
   "strapi": {
     "uuid": "7669c394-fc7e-48e3-9f41-822e424852f5",
     "installId": "3c253150abdca4fa53ec8cbd4b8f32e1670e29d97994c8ff0e81497ee179386d"
-  }
+  },
+  "packageManager": "yarn@4.18.0"
 }

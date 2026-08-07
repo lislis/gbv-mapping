@@ -17,7 +17,7 @@ export interface CriterionCriterion extends Struct.ComponentSchema {
 }
 
 declare module '@strapi/strapi' {
-  export module Public {
+  export namespace Public {
     export interface ComponentSchemas {
       'criterion.criterion': CriterionCriterion;
     }
