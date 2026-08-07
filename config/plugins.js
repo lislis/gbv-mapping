@@ -23,8 +23,8 @@ module.exports = ({ env }) => ({
       provider: 'local',
       providerOptions: {
           sizeLimit: 1000000,
-	  path: '/opt/render/project/src/data/uploads',
-	  root: '/opt/render/project/src/data/uploads'
+	  path: '/opt/render/project/src/data/public/uploads',
+	  root: '/opt/render/project/src/data/public/uploads'
       },
     },
   },
