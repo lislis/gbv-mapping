@@ -20,6 +20,11 @@
     "Description": {
       "type": "text"
     },
+    "Links": {
+      "type": "component",
+      "component": "link.link",
+      "repeatable": true
+    },
     "tooltypes": {
       "type": "relation",
       "relation": "oneToMany",
@@ -40,14 +45,18 @@
       "relation": "oneToOne",
       "target": "api::status.status"
     },
+    "licence": {
+      "type": "string"
+    },
     "languages": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::language.language"
     },
-    "country": {
-      "type": "customField",
-      "customField": "plugin::strapi-country-select.country-select"
+    "countries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::country.country"
     },
     "creators": {
       "type": "relation",
@@ -66,6 +75,17 @@
     },
     "evaluation": {
       "type": "string"
+    },
+    "Suitedfor": {
+      "type": "text"
+    },
+    "Screenshots": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     },
     "privacy_data_1": {
       "type": "relation",

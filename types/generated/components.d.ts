@@ -16,10 +16,23 @@ export interface CriterionCriterion extends Struct.ComponentSchema {
   };
 }
 
+export interface LinkLink extends Struct.ComponentSchema {
+  collectionName: 'components_link_links';
+  info: {
+    displayName: 'Link';
+    icon: 'cursor';
+  };
+  attributes: {
+    Description: Schema.Attribute.String;
+    Url: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
       'criterion.criterion': CriterionCriterion;
+      'link.link': LinkLink;
     }
   }
 }
