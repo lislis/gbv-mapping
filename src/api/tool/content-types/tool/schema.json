@@ -40,6 +40,9 @@
       "relation": "oneToOne",
       "target": "api::status.status"
     },
+    "licence": {
+      "type": "string"
+    },
     "languages": {
       "type": "relation",
       "relation": "oneToMany",

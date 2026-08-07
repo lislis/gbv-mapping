@@ -852,6 +852,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
       'api::gbv-issue.gbv-issue'
     >;
     languages: Schema.Attribute.Relation<'oneToMany', 'api::language.language'>;
+    licence: Schema.Attribute.String;
     Link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tool.tool'> &
