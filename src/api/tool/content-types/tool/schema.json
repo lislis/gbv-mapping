@@ -76,6 +76,9 @@
     "evaluation": {
       "type": "string"
     },
+    "Suitedfor": {
+      "type": "text"
+    },
     "Screenshots": {
       "type": "media",
       "multiple": true,
