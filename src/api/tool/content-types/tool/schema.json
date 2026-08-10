@@ -363,7 +363,8 @@
       "target": "api::option.option"
     },
     "Score": {
-      "type": "float"
+      "type": "integer",
+      "default": 0
     }
   }
 }
