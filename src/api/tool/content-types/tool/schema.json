@@ -361,6 +361,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::option.option"
+    },
+    "Score": {
+      "type": "float"
     }
   }
 }
