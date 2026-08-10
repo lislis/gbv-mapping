@@ -10,5 +10,9 @@
     "draftAndPublish": false
   },
   "pluginOptions": {},
-  "attributes": {}
+  "attributes": {
+    "text": {
+      "type": "richtext"
+    }
+  }
 }

@@ -44,7 +44,7 @@ function calculate_evaluation(tool) {
     let group_weight = group_weights[keys];
     let weight_ratio = group_weight / values[0];
     let calc_score = values[1] * weight_ratio;
-    //console.log(keys, group_weight, values[0], values[1], weight_ratio, calc_score);
+    console.log(keys, group_weight, values[0], values[1], weight_ratio, calc_score);
     score += calc_score;
   });
 

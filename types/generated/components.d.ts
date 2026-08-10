@@ -1,5 +1,14 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface AboutAbout extends Struct.ComponentSchema {
+  collectionName: 'components_about_abouts';
+  info: {
+    displayName: 'about';
+    icon: 'brush';
+  };
+  attributes: {};
+}
+
 export interface CriterionCriterion extends Struct.ComponentSchema {
   collectionName: 'components_criterion_criteria';
   info: {
@@ -31,6 +40,7 @@ export interface LinkLink extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
+      'about.about': AboutAbout;
       'criterion.criterion': CriterionCriterion;
       'link.link': LinkLink;
     }
