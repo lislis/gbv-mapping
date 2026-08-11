@@ -4,6 +4,11 @@ exports.isObject = (obj) => {
 }
 
 
+exports.isValid = (num) => {
+  return num !== NaN && num !== null && num !== Infinity;
+}
+
+
 exports.option_weights = {
   'Yes': 1,
   'No': 0,

@@ -1,9 +1,9 @@
-
 let {isObject,
      option_weights,
      group_prefixes,
      group_weights,
-     tool_criterions } = require('./eval_util.js');
+     tool_criterions,
+     isValid } = require('./eval_util.js');
 
 
 function calculate_evaluation(tool) {
@@ -36,15 +36,12 @@ function calculate_evaluation(tool) {
     mapping.set(group, [old_val[0]+1, old_val[1]+val]);
   }
 
-  console.log(mapping);
-
   let score = 0;
   // get weighting per group
   // calc group weight ratio, multiply reached points by ratio
   // calc final score
   mapping.forEach((values, keys) => {
-
-    if (values[0] == 0 && values[1] == 0) return; 
+    if (values[0] == 0 && values[1] == 0) return; // important! otherwise NaN and infinity will enter the race
     
     let group_weight = group_weights[keys];
     let weight_ratio = values[0] !== null ? group_weight / values[0] : 0;
@@ -58,44 +55,21 @@ function calculate_evaluation(tool) {
 
 
 module.exports = {
-  async afterCreate(event) {
-    // const { result } = event; // result should be the saved entity
-    // const id = result.id;
-    
-    // const score = calculate_evaluation(result);
-    // if (score !== NaN && result.Score === score) return;
-
-    // await strapi.entityService.update(
-    //   'api::tool.tool', // e.g. 'api::article.article'
-    //   id,
-    //   {
-    //     data: {
-    //       Score: score,
-    //     },
-    //   }
-    // );
-  },
   async afterUpdate(event) {
     const { result } = event; // result should be the saved entity
-
-    console.log("ACTION ", event.action);
-    
     const id = result.id;
-
+       
     try {
       const fullTool = await strapi.entityService.findOne('api::tool.tool', id, {
         populate: tool_criterions()
       });
-      //console.log("@###########", fullTool);
+    
       if (fullTool) {
         const score = calculate_evaluation(fullTool);
         const old_score = fullTool.Score || 0;
 
-        console.log("@###########", fullTool.Score, score);
         if (!isValid(score)) return;
         if (fullTool.Score === score) return;
-
-        console.log("@###########", "  is valid and not liek before");
         
         await strapi.entityService.update(
           'api::tool.tool', // e.g. 'api::article.article'
@@ -113,7 +87,3 @@ module.exports = {
   },
 };
 
-
-function isValid(num) {
-  return num !== NaN && num !== null && num !== Infinity;
-}
