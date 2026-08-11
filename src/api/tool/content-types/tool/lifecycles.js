@@ -30,21 +30,26 @@ function calculate_evaluation(tool) {
   for (const item of cats) {
     let i = Object.entries(item)[0];
     let key = i[0];
-    let val = i[1];
+    let val = i[1] || 0;
     let group = group_prefixes.find(x => key.startsWith(x));
     let old_val = mapping.get(group);
     mapping.set(group, [old_val[0]+1, old_val[1]+val]);
   }
+
+  console.log(mapping);
 
   let score = 0;
   // get weighting per group
   // calc group weight ratio, multiply reached points by ratio
   // calc final score
   mapping.forEach((values, keys) => {
+
+    if (values[0] == 0 && values[1] == 0) return; 
+    
     let group_weight = group_weights[keys];
-    let weight_ratio = group_weight / values[0];
+    let weight_ratio = values[0] !== null ? group_weight / values[0] : 0;
     let calc_score = values[1] * weight_ratio;
-    console.log(keys, group_weight, values[0], values[1], weight_ratio, calc_score);
+    //console.log(keys, group_weight, values[0], values[1], weight_ratio, calc_score);
     score += calc_score;
   });
 
@@ -54,35 +59,44 @@ function calculate_evaluation(tool) {
 
 module.exports = {
   async afterCreate(event) {
-    const { result } = event; // result should be the saved entity
-    const id = result.id;
+    // const { result } = event; // result should be the saved entity
+    // const id = result.id;
     
-    const score = calculate_evaluation(result);
-    if (result.Score === score) return;
+    // const score = calculate_evaluation(result);
+    // if (score !== NaN && result.Score === score) return;
 
-    await strapi.entityService.update(
-      'api::tool.tool', // e.g. 'api::article.article'
-      id,
-      {
-        data: {
-          Score: score,
-        },
-      }
-    );
+    // await strapi.entityService.update(
+    //   'api::tool.tool', // e.g. 'api::article.article'
+    //   id,
+    //   {
+    //     data: {
+    //       Score: score,
+    //     },
+    //   }
+    // );
   },
   async afterUpdate(event) {
     const { result } = event; // result should be the saved entity
+
+    console.log("ACTION ", event.action);
+    
     const id = result.id;
 
     try {
       const fullTool = await strapi.entityService.findOne('api::tool.tool', id, {
         populate: tool_criterions()
       });
-
+      //console.log("@###########", fullTool);
       if (fullTool) {
         const score = calculate_evaluation(fullTool);
+        const old_score = fullTool.Score || 0;
+
+        console.log("@###########", fullTool.Score, score);
+        if (!isValid(score)) return;
         if (fullTool.Score === score) return;
 
+        console.log("@###########", "  is valid and not liek before");
+        
         await strapi.entityService.update(
           'api::tool.tool', // e.g. 'api::article.article'
           id,
@@ -98,3 +112,8 @@ module.exports = {
     }
   },
 };
+
+
+function isValid(num) {
+  return num !== NaN && num !== null && num !== Infinity;
+}
