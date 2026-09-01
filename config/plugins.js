@@ -28,5 +28,7 @@ module.exports = ({ env }) => ({
       },
     },
   },
-
+  'better-blocks': {
+    enabled: true,
+  },
 });

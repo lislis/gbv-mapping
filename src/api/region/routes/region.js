@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * about-page router
+ * region router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::about-page.about-page');
+module.exports = createCoreRouter('api::region.region');

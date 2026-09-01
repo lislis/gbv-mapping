@@ -443,34 +443,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
-  collectionName: 'about_pages';
-  info: {
-    displayName: 'About page';
-    pluralName: 'about-pages';
-    singularName: 'about-page';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::about-page.about-page'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    text: Schema.Attribute.RichText;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiAudienceAudience extends Struct.CollectionTypeSchema {
   collectionName: 'audiences';
   info: {
@@ -714,6 +686,34 @@ export interface ApiOptionOption extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiRegionRegion extends Struct.CollectionTypeSchema {
+  collectionName: 'regions';
+  info: {
+    displayName: 'Region';
+    pluralName: 'regions';
+    singularName: 'region';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::region.region'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiStatusStatus extends Struct.CollectionTypeSchema {
   collectionName: 'statuses';
   info: {
@@ -842,6 +842,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     creators: Schema.Attribute.Relation<'oneToMany', 'api::creator.creator'>;
     Description: Schema.Attribute.Text;
+    endorsed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     evaluation: Schema.Attribute.String;
     filter_tags: Schema.Attribute.Relation<
       'oneToMany',
@@ -869,6 +870,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     privacy_data_7: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     privacy_data_8: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     publishedAt: Schema.Attribute.DateTime;
+    regions: Schema.Attribute.Relation<'oneToMany', 'api::region.region'>;
     safety_1: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     safety_2: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     safety_3: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
@@ -902,6 +904,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     tone_5: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     tone_6: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     tone_7: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    toolrole: Schema.Attribute.Relation<'oneToOne', 'api::toolrole.toolrole'>;
     tooltypes: Schema.Attribute.Relation<'oneToMany', 'api::tooltype.tooltype'>;
     transparency_1: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     transparency_2: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
@@ -909,6 +912,34 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     transparency_4: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     transparency_5: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     transparency_6: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiToolroleToolrole extends Struct.CollectionTypeSchema {
+  collectionName: 'toolroles';
+  info: {
+    displayName: 'Toolrole';
+    pluralName: 'toolroles';
+    singularName: 'toolrole';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::toolrole.toolrole'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -935,6 +966,68 @@ export interface ApiTooltypeTooltype extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::tooltype.tooltype'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTransparencyTransparency extends Struct.SingleTypeSchema {
+  collectionName: 'transparencies';
+  info: {
+    displayName: 'Transparency';
+    pluralName: 'transparencies';
+    singularName: 'transparency';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    field1: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::better-blocks.better-blocks',
+        {
+          detailsStyle: 'custom';
+        }
+      >;
+    field2: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::better-blocks.better-blocks',
+        {
+          detailsStyle: 'custom';
+        }
+      >;
+    field3: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::better-blocks.better-blocks',
+        {
+          detailsStyle: 'custom';
+        }
+      >;
+    field4: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::better-blocks.better-blocks',
+        {
+          detailsStyle: 'custom';
+        }
+      >;
+    field5: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::better-blocks.better-blocks',
+        {
+          detailsStyle: 'custom';
+        }
+      >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::transparency.transparency'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
@@ -1455,7 +1548,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::audience.audience': ApiAudienceAudience;
       'api::country.country': ApiCountryCountry;
       'api::creator.creator': ApiCreatorCreator;
@@ -1464,9 +1556,12 @@ declare module '@strapi/strapi' {
       'api::gbv-issue.gbv-issue': ApiGbvIssueGbvIssue;
       'api::language.language': ApiLanguageLanguage;
       'api::option.option': ApiOptionOption;
+      'api::region.region': ApiRegionRegion;
       'api::status.status': ApiStatusStatus;
       'api::tool.tool': ApiToolTool;
+      'api::toolrole.toolrole': ApiToolroleToolrole;
       'api::tooltype.tooltype': ApiTooltypeTooltype;
+      'api::transparency.transparency': ApiTransparencyTransparency;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

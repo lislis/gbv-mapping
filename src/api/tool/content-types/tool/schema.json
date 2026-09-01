@@ -365,6 +365,20 @@
     "Score": {
       "type": "integer",
       "default": 0
+    },
+    "regions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::region.region"
+    },
+    "toolrole": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::toolrole.toolrole"
+    },
+    "endorsed": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
