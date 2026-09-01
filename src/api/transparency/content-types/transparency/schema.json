@@ -11,20 +11,40 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "about": {
-      "type": "richtext"
+    "field1": {
+      "type": "customField",
+      "customField": "plugin::better-blocks.better-blocks",
+      "options": {
+        "detailsStyle": "custom"
+      }
     },
-    "calculation": {
-      "type": "richtext"
+    "field2": {
+      "type": "customField",
+      "customField": "plugin::better-blocks.better-blocks",
+      "options": {
+        "detailsStyle": "custom"
+      }
     },
-    "design_criteria": {
-      "type": "richtext"
+    "field3": {
+      "type": "customField",
+      "customField": "plugin::better-blocks.better-blocks",
+      "options": {
+        "detailsStyle": "custom"
+      }
     },
-    "criteria_origin": {
-      "type": "richtext"
+    "field4": {
+      "type": "customField",
+      "customField": "plugin::better-blocks.better-blocks",
+      "options": {
+        "detailsStyle": "custom"
+      }
     },
-    "privacy_data": {
-      "type": "richtext"
+    "field5": {
+      "type": "customField",
+      "customField": "plugin::better-blocks.better-blocks",
+      "options": {
+        "detailsStyle": "custom"
+      }
     }
   }
 }
