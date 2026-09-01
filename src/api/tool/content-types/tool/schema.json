@@ -365,6 +365,11 @@
     "Score": {
       "type": "integer",
       "default": 0
+    },
+    "regions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::region.region"
     }
   }
 }

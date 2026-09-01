@@ -714,6 +714,34 @@ export interface ApiOptionOption extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiRegionRegion extends Struct.CollectionTypeSchema {
+  collectionName: 'regions';
+  info: {
+    displayName: 'Region';
+    pluralName: 'regions';
+    singularName: 'region';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::region.region'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiStatusStatus extends Struct.CollectionTypeSchema {
   collectionName: 'statuses';
   info: {
@@ -869,6 +897,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     privacy_data_7: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     privacy_data_8: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     publishedAt: Schema.Attribute.DateTime;
+    regions: Schema.Attribute.Relation<'oneToMany', 'api::region.region'>;
     safety_1: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     safety_2: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     safety_3: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
@@ -1464,6 +1493,7 @@ declare module '@strapi/strapi' {
       'api::gbv-issue.gbv-issue': ApiGbvIssueGbvIssue;
       'api::language.language': ApiLanguageLanguage;
       'api::option.option': ApiOptionOption;
+      'api::region.region': ApiRegionRegion;
       'api::status.status': ApiStatusStatus;
       'api::tool.tool': ApiToolTool;
       'api::tooltype.tooltype': ApiTooltypeTooltype;
