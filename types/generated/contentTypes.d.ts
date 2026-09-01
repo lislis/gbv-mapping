@@ -931,6 +931,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     tone_5: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     tone_6: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     tone_7: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    toolrole: Schema.Attribute.Relation<'oneToOne', 'api::toolrole.toolrole'>;
     tooltypes: Schema.Attribute.Relation<'oneToMany', 'api::tooltype.tooltype'>;
     transparency_1: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     transparency_2: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
@@ -938,6 +939,34 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     transparency_4: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     transparency_5: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     transparency_6: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiToolroleToolrole extends Struct.CollectionTypeSchema {
+  collectionName: 'toolroles';
+  info: {
+    displayName: 'Toolrole';
+    pluralName: 'toolroles';
+    singularName: 'toolrole';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::toolrole.toolrole'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1496,6 +1525,7 @@ declare module '@strapi/strapi' {
       'api::region.region': ApiRegionRegion;
       'api::status.status': ApiStatusStatus;
       'api::tool.tool': ApiToolTool;
+      'api::toolrole.toolrole': ApiToolroleToolrole;
       'api::tooltype.tooltype': ApiTooltypeTooltype;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "toolroles",
+  "info": {
+    "singularName": "toolrole",
+    "pluralName": "toolroles",
+    "displayName": "Toolrole"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

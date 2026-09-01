@@ -370,6 +370,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::region.region"
+    },
+    "toolrole": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::toolrole.toolrole"
     }
   }
 }
