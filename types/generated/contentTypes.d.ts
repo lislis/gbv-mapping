@@ -870,6 +870,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     creators: Schema.Attribute.Relation<'oneToMany', 'api::creator.creator'>;
     Description: Schema.Attribute.Text;
+    endorsed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     evaluation: Schema.Attribute.String;
     filter_tags: Schema.Attribute.Relation<
       'oneToMany',
@@ -995,6 +996,38 @@ export interface ApiTooltypeTooltype extends Struct.CollectionTypeSchema {
       'api::tooltype.tooltype'
     > &
       Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTransparencyTransparency extends Struct.SingleTypeSchema {
+  collectionName: 'transparencies';
+  info: {
+    displayName: 'Transparency';
+    pluralName: 'transparencies';
+    singularName: 'transparency';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    about: Schema.Attribute.RichText;
+    calculation: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    criteria_origin: Schema.Attribute.RichText;
+    design_criteria: Schema.Attribute.RichText;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::transparency.transparency'
+    > &
+      Schema.Attribute.Private;
+    privacy_data: Schema.Attribute.RichText;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1527,6 +1560,7 @@ declare module '@strapi/strapi' {
       'api::tool.tool': ApiToolTool;
       'api::toolrole.toolrole': ApiToolroleToolrole;
       'api::tooltype.tooltype': ApiTooltypeTooltype;
+      'api::transparency.transparency': ApiTransparencyTransparency;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

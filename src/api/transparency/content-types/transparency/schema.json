@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "transparencies",
+  "info": {
+    "singularName": "transparency",
+    "pluralName": "transparencies",
+    "displayName": "Transparency"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "about": {
+      "type": "richtext"
+    },
+    "calculation": {
+      "type": "richtext"
+    },
+    "design_criteria": {
+      "type": "richtext"
+    },
+    "criteria_origin": {
+      "type": "richtext"
+    },
+    "privacy_data": {
+      "type": "richtext"
+    }
+  }
+}

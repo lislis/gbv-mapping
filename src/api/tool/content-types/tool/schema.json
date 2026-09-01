@@ -375,6 +375,10 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::toolrole.toolrole"
+    },
+    "endorsed": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
