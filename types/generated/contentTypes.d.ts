@@ -616,6 +616,54 @@ export interface ApiFilterTagFilterTag extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFooterFooter extends Struct.SingleTypeSchema {
+  collectionName: 'footers';
+  info: {
+    displayName: 'Footer';
+    pluralName: 'footers';
+    singularName: 'footer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    footer1: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::better-blocks.better-blocks',
+        {
+          detailsStyle: 'github';
+        }
+      >;
+    footer2: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::better-blocks.better-blocks',
+        {
+          detailsStyle: 'github';
+        }
+      >;
+    footer3: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::better-blocks.better-blocks',
+        {
+          detailsStyle: 'github';
+        }
+      >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::footer.footer'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFundingFunding extends Struct.CollectionTypeSchema {
   collectionName: 'fundings';
   info: {
@@ -1598,6 +1646,7 @@ declare module '@strapi/strapi' {
       'api::country.country': ApiCountryCountry;
       'api::creator.creator': ApiCreatorCreator;
       'api::filter-tag.filter-tag': ApiFilterTagFilterTag;
+      'api::footer.footer': ApiFooterFooter;
       'api::funding.funding': ApiFundingFunding;
       'api::gbv-issue.gbv-issue': ApiGbvIssueGbvIssue;
       'api::language.language': ApiLanguageLanguage;

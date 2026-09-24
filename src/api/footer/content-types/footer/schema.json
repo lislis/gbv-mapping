@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "footers",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "Footer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "footer1": {
+      "type": "customField",
+      "customField": "plugin::better-blocks.better-blocks",
+      "options": {
+        "detailsStyle": "github"
+      }
+    },
+    "footer2": {
+      "type": "customField",
+      "customField": "plugin::better-blocks.better-blocks",
+      "options": {
+        "detailsStyle": "github"
+      }
+    },
+    "footer3": {
+      "type": "customField",
+      "customField": "plugin::better-blocks.better-blocks",
+      "options": {
+        "detailsStyle": "github"
+      }
+    }
+  }
+}
