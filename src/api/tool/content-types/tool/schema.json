@@ -379,6 +379,9 @@
     "endorsed": {
       "type": "boolean",
       "default": false
+    },
+    "endorsement_text": {
+      "type": "text"
     }
   }
 }

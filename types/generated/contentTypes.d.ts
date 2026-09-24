@@ -936,6 +936,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     creators: Schema.Attribute.Relation<'oneToMany', 'api::creator.creator'>;
     Description: Schema.Attribute.Text;
     endorsed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    endorsement_text: Schema.Attribute.Text;
     evaluation: Schema.Attribute.String;
     filter_tags: Schema.Attribute.Relation<
       'oneToMany',
