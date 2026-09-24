@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "abouts",
+  "info": {
+    "singularName": "about",
+    "pluralName": "abouts",
+    "displayName": "About"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "about1": {
+      "type": "customField",
+      "customField": "plugin::better-blocks.better-blocks",
+      "options": {
+        "detailsStyle": "github"
+      }
+    },
+    "about2": {
+      "type": "customField",
+      "customField": "plugin::better-blocks.better-blocks",
+      "options": {
+        "detailsStyle": "github"
+      }
+    },
+    "about3": {
+      "type": "customField",
+      "customField": "plugin::better-blocks.better-blocks",
+      "options": {
+        "detailsStyle": "github"
+      }
+    }
+  }
+}
