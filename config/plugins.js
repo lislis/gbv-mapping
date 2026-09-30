@@ -1,34 +1,46 @@
 module.exports = ({ env }) => ({
-  'users-permissions': {
-    config: {
-      jwtManagement: 'refresh',
-      sessions: {
-        accessTokenLifespan: 3000, // 50 minutes
-        maxRefreshTokenLifespan: 2592000, // 30 days (default)
-        idleRefreshTokenLifespan: 1209600, // 14 days (default)
-        maxSessionLifespan: 432000, // 5 days 
-        idleSessionLifespan:  36000, // 10 hours
-        httpOnly: false, // Set to true for HTTP-only cookies
-        cookie: {
-          name: 'strapi_up_refresh',
-          sameSite: 'strict',
-          path: '/',
-          secure: false, // true in production
+    'users-permissions': {
+        config: {
+            jwtManagement: 'refresh',
+            sessions: {
+                accessTokenLifespan: 3000, // 50 minutes
+                maxRefreshTokenLifespan: 2592000, // 30 days (default)
+                idleRefreshTokenLifespan: 1209600, // 14 days (default)
+                maxSessionLifespan: 432000, // 5 days 
+                idleSessionLifespan:  36000, // 10 hours
+                httpOnly: false, // Set to true for HTTP-only cookies
+                cookie: {
+                    name: 'strapi_up_refresh',
+                    sameSite: 'strict',
+                    path: '/',
+                    secure: false, // true in production
+                },
+            },
         },
-      },
     },
-  },
-  upload: {
-    config: {
-      provider: 'local',
-      providerOptions: {
-          sizeLimit: 1000000,
-	  path: '/opt/render/project/src/data/public/uploads',
-	  root: '/opt/render/project/src/data/public/uploads'
-      },
+    email: {
+        config: {
+            provider: 'strapi-provider-email-resend-strapi',
+            providerOptions: {
+                apiKey: env('RESEND_API_KEY'), // Required
+            },
+            settings: {
+                defaultFrom: env('RESEND_DEFAULT_FROM'),
+                defaultReplyTo: env('RESEND_DEFAULT_FROM')
+            },
+        }
     },
-  },
-  'better-blocks': {
-    enabled: true,
-  },
+    upload: {
+        config: {
+            provider: 'local',
+            providerOptions: {
+                sizeLimit: 1000000,
+	        path: '/opt/render/project/src/data/public/uploads',
+	        root: '/opt/render/project/src/data/public/uploads'
+            },
+        },
+    },
+    'better-blocks': {
+        enabled: true,
+    },
 });
