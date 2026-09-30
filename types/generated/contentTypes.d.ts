@@ -575,6 +575,46 @@ export interface ApiCreatorCreator extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFeedbackFeedback extends Struct.CollectionTypeSchema {
+  collectionName: 'feedbacks';
+  info: {
+    displayName: 'Feedback';
+    pluralName: 'feedbacks';
+    singularName: 'feedback';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.String;
+    feedback: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::feedback.feedback'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    toolname: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<
+      [
+        'Missing tool',
+        'Incorrect information',
+        'Broken link',
+        'Safety concern',
+        'Accessibility issue',
+        'Other',
+      ]
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFilterTagFilterTag extends Struct.CollectionTypeSchema {
   collectionName: 'filter_tags';
   info: {
@@ -1646,6 +1686,7 @@ declare module '@strapi/strapi' {
       'api::audience.audience': ApiAudienceAudience;
       'api::country.country': ApiCountryCountry;
       'api::creator.creator': ApiCreatorCreator;
+      'api::feedback.feedback': ApiFeedbackFeedback;
       'api::filter-tag.filter-tag': ApiFilterTagFilterTag;
       'api::footer.footer': ApiFooterFooter;
       'api::funding.funding': ApiFundingFunding;

@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "feedbacks",
+  "info": {
+    "singularName": "feedback",
+    "pluralName": "feedbacks",
+    "displayName": "Feedback"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Missing tool",
+        "Incorrect information",
+        "Broken link",
+        "Safety concern",
+        "Accessibility issue",
+        "Other"
+      ]
+    },
+    "toolname": {
+      "type": "string"
+    },
+    "feedback": {
+      "type": "text"
+    },
+    "email": {
+      "type": "string"
+    }
+  }
+}

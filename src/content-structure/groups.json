@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "sections": {
+    "collectionTypes": {
+      "groups": [
+        {
+          "parent": null,
+          "name": "Contact Forms",
+          "id": "grp_831666f1d4f243f197cd7f78",
+          "children": [
+            {
+              "uid": "api::feedback.feedback",
+              "type": "contentType"
+            }
+          ]
+        }
+      ]
+    },
+    "singleTypes": {
+      "groups": []
+    }
+  }
+}
