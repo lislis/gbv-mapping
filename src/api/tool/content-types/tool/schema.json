@@ -371,9 +371,9 @@
       "relation": "oneToMany",
       "target": "api::region.region"
     },
-    "toolrole": {
+    "toolroles": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::toolrole.toolrole"
     },
     "endorsed": {

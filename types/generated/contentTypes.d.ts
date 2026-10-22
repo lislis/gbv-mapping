@@ -1038,7 +1038,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     tone_5: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     tone_6: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     tone_7: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
-    toolrole: Schema.Attribute.Relation<'oneToOne', 'api::toolrole.toolrole'>;
+    toolroles: Schema.Attribute.Relation<'oneToMany', 'api::toolrole.toolrole'>;
     tooltypes: Schema.Attribute.Relation<'oneToMany', 'api::tooltype.tooltype'>;
     transparency_1: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     transparency_2: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
