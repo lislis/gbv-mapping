@@ -995,6 +995,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tool.tool'> &
       Schema.Attribute.Private;
     Name: Schema.Attribute.String;
+    NotSuitedFor: Schema.Attribute.Text;
     privacy_data_1: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     privacy_data_2: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;
     privacy_data_3: Schema.Attribute.Relation<'oneToOne', 'api::option.option'>;

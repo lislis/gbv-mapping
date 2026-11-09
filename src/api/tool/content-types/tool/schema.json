@@ -76,9 +76,6 @@
     "evaluation": {
       "type": "string"
     },
-    "Suitedfor": {
-      "type": "text"
-    },
     "Screenshots": {
       "type": "media",
       "multiple": true,
@@ -375,6 +372,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::toolrole.toolrole"
+    },
+    "Suitedfor": {
+      "type": "text"
+    },
+    "NotSuitedFor": {
+      "type": "text"
     },
     "endorsed": {
       "type": "boolean",
